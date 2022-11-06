@@ -40,12 +40,15 @@ app.get("/tweets", (request, response) => {
         }
     })
 
-    response.send(resposta);
+    const ultimosTweets = resposta.slice(-10);
+    response.send(ultimosTweets);
+
+
 })
 
 
 app.post("/sign-up", (request, response) => {
-    console.log(request.body)
+
     const newUser = {
 
         username: request.body.username,
@@ -54,7 +57,7 @@ app.post("/sign-up", (request, response) => {
     }
 
     users.push(newUser)
-    response.send("Ok")
+    response.send("OK")
 
 })
 
@@ -65,7 +68,7 @@ app.post("/tweets", (request, response) => {
     }
 
     tweets.push(newTweet)
-    response.send("Ok")
+    response.send("OK")
 })
 
 app.listen(5000, () => {
